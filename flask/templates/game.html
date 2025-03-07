@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelime Oyunu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #192b80;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        /* Kamera Çerçevesi */
+        .camera-frame {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            border: 10px solid #fff; /* Beyaz çerçeve */
+            border-radius: 15px; /* Yuvarlatılmış köşeler */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Modern gölge */
+            transition: transform 0.3s ease-in-out; /* Yumuşak geçiş efekti */
+        }
+
+        img:hover {
+            transform: scale(1.05); /* Hover efekti ile biraz büyüme */
+        }
+
+        /* Parmak Sayısı ve Soru */
+        .finger-count, .soru {
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Parmak Sayısı - Kameranın dışına yerleştirildi */
+        .finger-count {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Soru - Kameranın dışına yerleştirildi */
+        .soru {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
+
+
+        /* Alt Bilgi */
+        .alt-bilgi {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Menü Butonu */
+        .menu-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .menu-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Açılır Menü Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: none; /* Başlangıçta gizli */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Menü Kutusu */
+        .menu-box {
+            background: #192b80;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .menu-box h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background: #3755c0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: #4a6ae3;
+        }
+
+    </style>
+    <!-- JQuery Kütüphanesini Dahil Et -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Kamera Akışı -->
+    <div class="camera-frame">
+        <img src="{{ url_for('video_feed') }}" width="640" height="480">
+    </div>
+
+    <!-- Parmak Sayısı ve Soru -->
+    <div class="finger-count">
+        Verilen Cevap : <span id="fingerCount">0                         </span>
+    </div>
+
+    <div class="soru">
+        Soru:
+    </div>
+
+    <!-- Menü Butonu -->
+    <button class="menu-btn" onclick="toggleMenu()">Menü</button>
+
+    <!-- Açılır Menü (Başlangıçta Gizli) -->
+    <div class="menu-overlay" id="menuOverlay" onclick="closeMenu(event)">
+        <div class="menu-box">
+            <h2>Menü</h2>
+            <button class="menu-item">Sıralama</button>
+            <button class="menu-item">İstatistik</button>
+            <button class="menu-item">Çıkış Yap</button>
+        </div>
+    </div>
+
+    <!-- Puan Alanı -->
+    <div class="alt-bilgi">
+        Puan:
+    </div>
+
+    <script>
+        // Menü Aç/Kapa Fonksiyonu
+        function toggleMenu() {
+            document.getElementById("menuOverlay").style.display = "flex";
+        }
+
+        // Menü Kapatma (Boş bir alana tıklanınca)
+        function closeMenu(event) {
+            if (event.target.id === "menuOverlay") {
+                document.getElementById("menuOverlay").style.display = "none";
+            }
+        }
+
+        // Parmak Sayısını Güncelleme Fonksiyonu
+        function updateFingerCount() {
+            $.getJSON('/fingers_count', function(data) {
+                $('#fingerCount').text(data.totalFingers);  // Flask'tan gelen parmak sayısını göster
+            });
+        }
+
+        // 500 ms aralıklarla parmak sayısını güncelle
+        setInterval(updateFingerCount, 50);  
+    </script>
+</body>
+</html>

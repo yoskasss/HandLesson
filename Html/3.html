@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ders Takip</title>
+    <style>
+        /* Sayfa Genel Stili */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    background-color: #0A1A73; /* Koyu Mavi Arkaplan */
+    font-family: Arial, sans-serif;
+    color: #C0C4FF;
+}
+
+/* Geri Butonu */
+.geri-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.geri-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Hoş Geldiniz Yazısı */
+.hosgeldiniz {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+/* Tablo Konteyneri */
+.table-container {
+    width: 80%;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Tablo Stili */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Tablo Başlıkları */
+thead tr {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+th {
+    padding: 12px;
+    text-align: left;
+    font-size: 18px;
+}
+
+/* Tablo Satırları */
+td {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hover Efekti */
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Geri Butonu -->
+    <button class="geri-btn">Geri</button>
+
+    <!-- Hoş Geldiniz Yazısı -->
+    <h1 class="hosgeldiniz">Hoş Geldiniz,</h1>
+
+    <!-- Tablo -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Soru</th>
+                    <th>Konu</th>
+                    <th>Durum</th>
+                    <th>Ders Videosu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelime Oyunu</title>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #192b80;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+/* Menü Butonu */
+.menu-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.menu-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Kelime Kutusu */
+.kelime-kutu {
+    background-color: #c0c0ff;
+    padding: 40px 80px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kelime {
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    margin: 0;
+}
+
+/* Alt Bilgi */
+.alt-bilgi {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+}
+
+/* Açılır Menü Overlay */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none; /* Başlangıçta gizli */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Menü Kutusu */
+.menu-box {
+    background: #192b80;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 200px;
+}
+
+.menu-box h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background: #3755c0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #4a6ae3;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Menü Butonu -->
+    <button class="menu-btn" onclick="toggleMenu()">Menü</button>
+
+    <!-- Açılır Menü (Başlangıçta Gizli) -->
+    <div class="menu-overlay" id="menuOverlay" onclick="closeMenu(event)">
+        <div class="menu-box">
+            <h2>Menü</h2>
+            <button class="menu-item">Sıralama</button>
+            <button class="menu-item">İstatistik</button>
+            <button class="menu-item">Çıkış Yap</button>
+        </div>
+    </div>
+
+    <!-- Kelime Alanı -->
+    <div class="kelime-kutu">
+        <p class="kelime">kamera</p>
+    </div>
+
+    <!-- Puan ve Soru Alanları -->
+    <div class="alt-bilgi">
+        <p>Puan:</p>
+        <p>Soru:</p>
+    </div>
+
+    <script>
+        // Menü Aç/Kapa Fonksiyonu
+function toggleMenu() {
+    document.getElementById("menuOverlay").style.display = "flex";
+}
+
+// Menü Kapatma (Boş bir alana tıklanınca)
+function closeMenu(event) {
+    if (event.target.id === "menuOverlay") {
+        document.getElementById("menuOverlay").style.display = "none";
+    }
+}
+
+    </script>
+</body>
+</html>

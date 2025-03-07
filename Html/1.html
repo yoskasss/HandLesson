@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Formu</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgb(56, 80, 158);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Altıgen Deseni */
+        .hexagon-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            z-index: -1;
+        }
+
+        .hexagon {
+            width: 60px;
+            height: 34.64px;
+            background-color: #0d47a1;
+            margin: 5px;
+            position: relative;
+        }
+
+        .hexagon:before, .hexagon:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+        }
+
+        .hexagon:before {
+            top: -17.32px;
+            border-bottom: 17.32px solid #0d47a1;
+        }
+
+        .hexagon:after {
+            bottom: -17.32px;
+            border-top: 17.32px solid #0d47a1;
+        }
+
+        .container {
+            position: relative;
+            width: 80%;
+            max-width: 400px;
+            background: #1a2b7a;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .form-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            color: white;
+            text-align: left;
+        }
+
+        input {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            background: darkblue;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: navy;
+        }
+
+        /* Altıgen Desen Pozisyonlandırma */
+        .hexagon-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 70px);
+            grid-gap: 5px;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h2>Kayıt Formu</h2>
+            <form>
+                <label for="ad">Ad</label>
+                <input type="text" id="ad" name="ad">
+
+                <label for="soyad">Soyad</label>
+                <input type="text" id="soyad" name="soyad">
+
+                <label for="okulAdi">Okul Adı</label>
+                <input type="text" id="okulAdi" name="okulAdi">
+
+                <label for="okulNo">Okul No</label>
+                <input type="text" id="okulNo" name="okulNo">
+
+                <button type="submit">Kayıt Ol!</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

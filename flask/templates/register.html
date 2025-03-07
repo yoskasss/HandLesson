@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kayıt Sayfası</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Kayıt Ol</h2>
+    <form action="/register" method="post">
+        <label>Adınız:</label>
+        <input type="text" name="name" required>
+        <button type="submit">Başla</button>
+    </form>
+</body>
+</html>
